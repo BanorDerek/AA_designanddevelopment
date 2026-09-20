@@ -1,0 +1,38 @@
+.admin-dashboard__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-cardboard-deep);
+  margin-bottom: var(--space-3);
+}
+
+.admin-dashboard__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-2);
+}
+
+.admin-dashboard__card {
+  background: white;
+  border-radius: 10px;
+  padding: var(--space-2);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s var(--ease-cozy);
+}
+
+.admin-dashboard__card:hover {
+  transform: translateY(-3px);
+}
+
+.admin-dashboard__card h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-cardboard-deep);
+  margin-bottom: 4px;
+}
+
+.admin-dashboard__card p {
+  font-size: 0.8rem;
+  color: var(--color-cardboard);
+  margin: 0;
+}

@@ -1,0 +1,458 @@
+/* AdminJournal.css - Clean & Modern with Image Guidance */
+
+.admin-journal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.admin-journal__message {
+  background: rgba(178, 168, 129, 0.12);
+  color: #5a4f3a;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
+  border-left: 3px solid #B2A881;
+}
+
+.admin-journal__required {
+  color: #c0392b;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+.admin-page__error {
+  background: rgba(192, 57, 43, 0.08);
+  color: #c0392b;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
+  border-left: 3px solid #c0392b;
+}
+
+/* ============================================================
+   IMAGE UPLOAD GUIDANCE - BREAKS TO NEXT LINE
+   ============================================================ */
+.admin-journal__image-guidance {
+  display: block;
+  width: 100%;
+  font-size: 0.55rem;
+  color: #b0a8a0;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-top: 3px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  font-weight: 100;
+}
+
+.admin-journal__image-guidance strong {
+  font-weight: 400;
+  color: #8a7f75;
+}
+
+/* Style for the upload label container */
+.admin-journal__upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 100;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background: #f0ede8;
+  color: #4a3f3a;
+}
+
+.admin-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-btn:active {
+  transform: translateY(0);
+}
+
+.admin-btn--primary {
+  background: #B2A881;
+  color: #ffffff;
+}
+
+.admin-btn--primary:hover {
+  background: #9e946e;
+  color: #ffffff;
+}
+
+.admin-btn--small {
+  padding: 5px 12px;
+  font-size: 0.75rem;
+}
+
+.admin-btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #4a3f3a;
+}
+
+.admin-btn--ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.admin-btn--danger {
+  background: #c0392b;
+  color: #ffffff;
+}
+
+.admin-btn--danger:hover {
+  background: #a93226;
+  color: #ffffff;
+}
+
+.admin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.admin-journal__form {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.admin-journal__form-title {
+  font-family: 'Albertus Nova Regular', serif;
+  font-weight: 100 !important;
+  font-size: 1.2rem;
+  color: var(--color-cardboard-deep);
+  margin: 0 0 var(--space-2) 0;
+  letter-spacing: 0.06em;
+}
+
+.admin-journal__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.admin-journal__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-journal__form-group label {
+  font-size: 0.8rem;
+  color: #4a3f3a;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.admin-journal__form-group input,
+.admin-journal__form-group textarea {
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-weight: 100;
+  background: #fcfcfc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #4a3f3a;
+}
+
+.admin-journal__form-group input:focus,
+.admin-journal__form-group textarea:focus {
+  outline: none;
+  border-color: #B2A881;
+  box-shadow: 0 0 0 3px rgba(178, 168, 129, 0.1);
+  background: #ffffff;
+}
+
+.admin-journal__form-group input::placeholder,
+.admin-journal__form-group textarea::placeholder {
+  color: #b0a8a0;
+  opacity: 0.6;
+}
+
+.admin-journal__hint {
+  font-size: 0.65rem;
+  color: var(--color-cardboard-mid);
+  font-weight: 100;
+  opacity: 0.5;
+  margin-left: 8px;
+}
+
+.admin-journal__form-checkbox {
+  margin: 4px 0;
+}
+
+.admin-journal__form-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: #4a3f3a;
+}
+
+.admin-journal__form-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #B2A881;
+}
+
+.admin-journal__form-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.admin-journal__form-actions .admin-btn {
+  flex: 1;
+  padding: 10px;
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.admin-journal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.admin-journal__card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-journal__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-journal__card-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #f5f2ee;
+  overflow: hidden;
+}
+
+.admin-journal__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-journal__no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #b0a8a0;
+  font-size: 0.75rem;
+  background: #f5f2ee;
+  flex-direction: column;
+  gap: 4px;
+  letter-spacing: 0.05em;
+}
+
+.admin-journal__no-image span {
+  opacity: 0.5;
+}
+
+.admin-journal__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e67e22;
+  color: #ffffff;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 0.55rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-journal__card-info {
+  padding: var(--space-2);
+}
+
+.admin-journal__card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: 4px;
+  font-size: 0.65rem;
+  color: #b0a8a0;
+  letter-spacing: 0.03em;
+}
+
+.admin-journal__card-date {
+  font-family: var(--font-body);
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.admin-journal__card-author {
+  font-family: var(--font-body);
+  font-weight: 100;
+}
+
+.admin-journal__card-title {
+  font-family: 'Albertus Nova Regular', serif;
+  font-weight: 100 !important;
+  font-size: 1.05rem;
+  color: #4a3f3a;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.admin-journal__card-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 0.65rem;
+  color: var(--color-cardboard-mid);
+  opacity: 0.5;
+  margin-bottom: var(--space-1);
+}
+
+.admin-journal__card-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-journal__card-actions .admin-btn {
+  flex: 1;
+  justify-content: center;
+  min-width: 70px;
+  font-size: 0.7rem;
+}
+
+.admin-journal__empty {
+  text-align: center;
+  color: #b0a8a0;
+  padding: var(--space-4);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   PAGE TITLES
+   ============================================================ */
+.admin-page__title {
+  font-family: 'Albertus Nova Regular', serif;
+  font-weight: 100 !important;
+  font-size: 1.4rem;
+  color: #4a3f3a;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.06em;
+}
+
+.admin-page__subtitle {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.8rem;
+  color: #b0a8a0;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .admin-journal__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .admin-journal__form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .admin-journal__form-actions {
+    flex-direction: column;
+  }
+
+  .admin-journal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-journal__card-actions {
+    flex-direction: column;
+  }
+
+  .admin-journal__card-actions .admin-btn {
+    width: 100%;
+  }
+
+  .admin-page__title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-journal__form {
+    padding: var(--space-2);
+  }
+
+  .admin-journal__form-group input,
+  .admin-journal__form-group textarea {
+    font-size: 0.85rem;
+  }
+
+  .admin-journal__card {
+    border-radius: 8px;
+  }
+}

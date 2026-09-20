@@ -1,0 +1,302 @@
+/* AdminBTS.css */
+.admin-bts__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2);
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.admin-bts__message {
+  background: rgba(138, 154, 126, 0.15);
+  color: var(--color-cardboard-deep);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
+}
+
+.admin-bts__form {
+  background: white;
+  border-radius: 10px;
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.admin-bts__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--color-cardboard-deep);
+}
+
+.admin-bts__form input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.admin-bts__form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.admin-bts__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.admin-bts__card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-bts__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.admin-bts__card-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.admin-bts__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-bts__no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-cardboard-mid);
+  font-size: 0.85rem;
+  background: #f9f9f9;
+}
+
+.admin-bts__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e67e22;
+  color: white;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.admin-bts__card-info {
+  padding: var(--space-2);
+}
+
+.admin-bts__card-title {
+  font-family: 'Albertus Nova Regular', serif;
+  font-weight: 100 !important;
+  font-size: 1rem;
+  color: var(--color-cardboard-deep);
+  margin: 0 0 4px 0;
+}
+
+.admin-bts__card-caption {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-cardboard-mid);
+  margin: 0 0 var(--space-2) 0;
+  opacity: 0.7;
+}
+
+.admin-bts__card-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-bts__card-reorder {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.admin-bts__empty {
+  text-align: center;
+  color: var(--color-cardboard-mid);
+  padding: var(--space-4);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .admin-bts__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-bts__card-actions {
+    flex-direction: column;
+  }
+  
+  .admin-bts__card-actions .admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* AdminBTS.css - Add these styles */
+
+/* Category Badge */
+.admin-bts__category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 0.6rem;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin-bts__category-badge--moodboard {
+  background: rgba(139, 69, 19, 0.7);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.admin-bts__category-badge--bts {
+  background: rgba(26, 35, 53, 0.7);
+  border: 1px solid rgba(26, 35, 53, 0.3);
+}
+/* AdminBTS.css - Add modal styles */
+
+/* Modal Overlay */
+.admin-bts__modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-bts__modal {
+  background: white;
+  border-radius: 12px;
+  padding: var(--space-4);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.admin-bts__modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.admin-bts__modal-header h2 {
+  font-family: 'Albertus Nova Regular', serif;
+  font-weight: 100 !important;
+  font-size: 1.2rem;
+  color: var(--color-cardboard-deep);
+  margin: 0;
+}
+
+.admin-bts__modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-cardboard-mid);
+  transition: color 0.3s ease;
+  padding: 4px 8px;
+}
+
+.admin-bts__modal-close:hover {
+  color: var(--color-cardboard-deep);
+}
+
+.admin-bts__modal form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.admin-bts__modal form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--color-cardboard-deep);
+}
+
+.admin-bts__modal form input,
+.admin-bts__modal form select {
+  padding: 8px 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.admin-bts__modal form input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.admin-bts__modal-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.admin-bts__modal-actions .admin-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Project Badge */
+.admin-bts__project-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

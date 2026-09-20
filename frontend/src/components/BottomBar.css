@@ -1,0 +1,112 @@
+/* components/BottomBar.css */
+
+/* Top Bar - Static, always visible */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 90px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  padding-left: max(4px, env(safe-area-inset-left));
+  padding-right: max(4px, env(safe-area-inset-right));
+  background: #B2A881;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  
+  /* Always visible - removed auto-hide transitions */
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Pin the first and last children */
+.bottom-bar > *:first-child {
+  position: absolute;
+  left: max(4px, env(safe-area-inset-left));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bottom-bar > *:last-child {
+  position: absolute;
+  right: max(4px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Logo styles */
+.bottom-bar__logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-bar__logo {
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.bottom-bar__brand-name {
+  font-family: 'Albertus Nova', serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--color-cardboard-deep, #3a3226);
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   INDICATOR - Hidden since navbar is always visible
+   ========================================================= */
+
+.bottom-bar-trigger {
+  display: none; /* Hide the trigger area */
+}
+
+.bottom-bar-indicator {
+  display: none; /* Hide the indicator */
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .bottom-bar {
+    padding: 0 2px;
+    padding-left: max(2px, env(safe-area-inset-left));
+    padding-right: max(2px, env(safe-area-inset-right));
+    height: 70px;
+  }
+
+  .bottom-bar > *:first-child {
+    left: max(2px, env(safe-area-inset-left));
+  }
+
+  .bottom-bar > *:last-child {
+    right: max(2px, env(safe-area-inset-right));
+  }
+
+  .bottom-bar__logo {
+    height: 100px;
+  }
+
+  .bottom-bar__brand-name {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  /* No additional changes needed */
+}

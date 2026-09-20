@@ -1,0 +1,78 @@
+/* tokens.css - Add bottom bar height variables */
+
+:root {
+  /* Calm cream + cardboard brown */
+  --color-cream: #f6f1e7;
+  --color-cream-dim: #ece4d4;
+  --color-cardboard: #a8875f;
+  --color-cardboard-deep: #6b4f34;
+  --color-cardboard-panel: #7a5a3c;
+  --color-ink: #2b2420;
+  --color-line: rgba(43, 36, 32, 0.12);
+
+  /* Type */
+  --font-display: 'Albertus Nova', 'Georgia', serif;
+  --font-body: 'Chivo', 'General Sans', 'Inter', -apple-system, sans-serif;
+
+  /* Font weights */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --step-brand: clamp(1.6rem, 4vw, 3rem);
+  --step-h1: clamp(2rem, 5vw, 4rem);
+  --step-h2: clamp(1.4rem, 2.5vw, 2rem);
+  --step-body: 1rem;
+  --step-caption: 0.8rem;
+
+  --space-0: 0.25rem;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 4rem;
+  --space-5: 8rem;
+  --space-6: 10rem;
+
+  /* Bottom bar height */
+  --bottom-bar-height: 80px;
+  --bottom-bar-height-mobile: 70px;
+
+  --ease-cozy: cubic-bezier(0.22, 1, 0.36, 1);
+  --z-brand: 40;
+  --z-toggle-btn: 60;
+  --z-panel: 50;
+  --z-loader: 100;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: var(--color-cream);
+  color: var(--color-cardboard-deep);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-thin);
+}
+
+/* Global heading font — applies to every h1-h6 on every page automatically.
+   Individual page CSS no longer needs to repeat font-family for headings;
+   only size/color/spacing overrides should stay per-page. Elements that
+   use a heading-like class on a non-heading tag (e.g. a <span> or <div>
+   styled as a "heading") still need font-family set explicitly, since
+   this rule only targets real h1-h6 elements. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-regular);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

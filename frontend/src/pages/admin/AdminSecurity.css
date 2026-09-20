@@ -1,0 +1,57 @@
+.admin-security__message {
+  background: rgba(138, 154, 126, 0.15);
+  color: var(--color-cardboard-deep);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
+}
+
+.admin-security__section {
+  background: white;
+  border-radius: 10px;
+  padding: var(--space-3);
+  max-width: 420px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.admin-security__status {
+  font-size: 0.9rem;
+  color: var(--color-cardboard-deep);
+  margin-bottom: var(--space-2);
+}
+
+.admin-security__status--on {
+  color: #4a7c4e;
+  font-weight: 600;
+}
+
+.admin-security__qr {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-bottom: var(--space-2);
+}
+
+.admin-security__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.admin-security__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--color-cardboard-deep);
+}
+
+.admin-security__form input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+}

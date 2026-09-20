@@ -1,0 +1,437 @@
+/* =========================================
+   WORK PAGE
+========================================= */
+
+.work-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #403a35;
+  padding: 100px 40px 60px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.work-topbar {
+  width: 100%;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+  margin-left: auto;
+
+  box-sizing: border-box;
+
+  opacity: 0;
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  
+  margin-top: 10px;
+}
+
+.work-topbar--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   SECTION NAVIGATION
+========================================= */
+
+.work-section-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+  gap: 34px;
+  
+  margin-left: auto;
+}
+
+
+.work-section-nav__item {
+  appearance: none;
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  padding: 4px 0;
+  margin: 0;
+
+  font-family: 'Chivo', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+
+  font-style: italic;
+
+  letter-spacing: 1.5px;
+
+  color: #403a35;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.work-section-nav__item:hover {
+  opacity: 0.55;
+  transform: translateY(-1px);
+}
+
+.work-section-nav__item:focus-visible {
+  outline: 1px solid #403a35;
+  outline-offset: 5px;
+}
+
+
+/* =========================================
+   WORK SECTIONS
+========================================= */
+
+.work-section {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 30px;
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.8s ease var(--section-delay),
+    transform 0.8s ease var(--section-delay);
+}
+
+.work-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.work-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 60px;
+  row-gap: 30px;
+}
+
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+
+.work-card {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease var(--card-delay),
+              transform 0.7s ease var(--card-delay);
+}
+
+.work-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-card:hover {
+  text-decoration: none;
+}
+
+
+/* =========================================
+   IMAGE FRAME
+========================================= */
+
+.work-card__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.45 / 1;
+  overflow: hidden;
+  background: #181818;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.work-card__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1),
+              filter 0.5s ease;
+}
+
+.work-card:hover .work-card__frame img {
+  transform: scale(1.025);
+}
+
+
+/* =========================================
+   PROJECT NUMBER
+========================================= */
+
+.work-card__number-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.work-card__number {
+  font-family: 'Chivo', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================
+   PROJECT NAME
+========================================= */
+
+.work-card__name-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 35px 12px 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.48),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+}
+
+.work-card__name {
+  display: block;
+  font-family: 'Chivo', sans-serif;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: none;
+}
+
+
+/* =========================================
+   SECTION TITLE (shown when filtering)
+========================================= */
+
+.work-section-title {
+  font-family: 'Albertus Nova Regular', 'Albertus Nova', serif !important;
+  font-weight: 400 !important;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #403a35;
+  margin: 0 0 20px 0;
+  padding: 0;
+  opacity: 0.6;
+  font-style: normal;
+}
+
+/* Active state for section nav buttons */
+.work-section-nav__item--active {
+  opacity: 1 !important;
+  font-weight: 500 !important;
+  transform: none !important;
+  border-bottom: 2px solid #403a35;
+}
+
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .work-page {
+    padding: 100px 24px 60px;
+  }
+
+  .work-topbar {
+    height: 75px;
+  }
+
+  .work-section-nav {
+    gap: 22px;
+  }
+
+  .work-section-nav__item {
+    font-size: 12px;
+  }
+
+  .work-grid {
+    column-gap: 30px;
+    row-gap: 24px;
+  }
+  
+  .work-section-title {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE — MOBILE (NO SPACES ON SIDES)
+========================================= */
+
+@media (max-width: 700px) {
+
+  .work-page {
+    padding: 110px 0 40px; /* REMOVED side padding (16px → 0) */
+  }
+
+  .work-topbar {
+    height: auto;
+    min-height: 70px;
+    padding: 12px 16px; /* ADDED padding to topbar only */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .work-section-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-left: 0;
+    padding: 0 16px; /* ADDED padding to nav only */
+    box-sizing: border-box;
+  }
+
+  .work-section-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-section-nav__item {
+    flex-shrink: 0;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0; /* REMOVED gap between columns */
+    row-gap: 0; /* REMOVED gap between rows */
+    padding: 0; /* REMOVED padding */
+    margin: 0; /* REMOVED margin */
+    width: 100%;
+  }
+
+  .work-card {
+    width: 100%;
+    display: block;
+  }
+
+  .work-card__frame {
+    aspect-ratio: 1 / 1.05;
+    border-radius: 0; /* NO border radius on mobile */
+    overflow: hidden;
+  }
+
+  .work-card__name-overlay {
+    padding: 28px 8px 7px;
+  }
+
+  .work-card__name {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .work-card__number-badge {
+    top: 8px;
+    left: 8px;
+  }
+
+  .work-card__number {
+    font-size: 8px;
+  }
+  
+  .work-section-title {
+    font-size: 11px;
+    margin-bottom: 14px;
+    padding: 0 16px; /* ADDED padding to title */
+  }
+  
+  .work-section-nav__item--active {
+    border-bottom-width: 2px;
+  }
+  
+  .work-section {
+    padding: 0; /* REMOVED padding from sections */
+    margin: 0;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .work-page {
+    padding: 90px 0 40px; /* REMOVED side padding */
+  }
+
+  .work-topbar {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+
+  .work-section-nav {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .work-section-nav__item {
+    font-size: 10px;
+  }
+
+  .work-grid {
+    column-gap: 0;
+    row-gap: 0;
+  }
+  
+  .work-section-title {
+    font-size: 10px;
+    padding: 0 12px;
+  }
+}

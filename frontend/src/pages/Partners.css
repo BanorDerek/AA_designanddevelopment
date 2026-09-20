@@ -1,0 +1,251 @@
+/* Partners.css — left-aligned header + row of circular logos (logos only) */
+
+.partners-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px var(--space-3) calc(var(--space-4) + 80px);
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.partners-container {
+  width: 100%;
+}
+
+.partners-empty {
+  text-align: center;
+  padding: var(--space-5);
+  color: var(--color-cardboard-mid);
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* =========================================================
+   HEADER — LEFT ALIGNED
+   ========================================================= */
+
+.partners-hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.partners-hero-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.partners-hero-badge {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-cardboard-mid);
+  margin-bottom: var(--space-1);
+  opacity: 0.7;
+}
+
+.partners-title {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  letter-spacing: 0.08em;
+  color: var(--color-cardboard-deep);
+  margin-bottom: var(--space-1);
+  line-height: 1.1;
+  opacity: 0.85;
+}
+
+.partners-hero-line {
+  width: 25px;
+  height: 1px;
+  background: var(--color-cardboard-deep);
+  opacity: 0.15;
+}
+
+/* =========================================================
+   ROW OF CIRCULAR LOGOS
+   ========================================================= */
+
+.partners-row-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  transition-delay: 150ms;
+}
+
+.partners-row-wrap--visible {
+  opacity: 1;
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-2) var(--space-1);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.partners-row::-webkit-scrollbar {
+  display: none;
+}
+
+.partners-item {
+  flex-shrink: 0;
+  width: 96px; /* Reduced from 130px - just enough for logo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0; /* Removed gap since there's no text */
+  text-decoration: none;
+}
+
+.partners-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.partners-item:hover .partners-circle {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+.partners-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+}
+
+.partners-circle__placeholder {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: 1.8rem;
+  color: var(--color-cardboard-mid);
+  opacity: 0.5;
+}
+
+/* REMOVED: .partners-item__name and .partners-item__description */
+
+/* =========================================================
+   SCROLL ARROWS
+   ========================================================= */
+
+.partners-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: var(--color-cardboard-deep);
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partners-arrow:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.partners-arrow--left {
+  margin-right: var(--space-1);
+}
+
+.partners-arrow--right {
+  margin-left: var(--space-1);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .partners-page {
+    padding: 100px var(--space-2) calc(var(--space-3) + 80px);
+  }
+
+  .partners-title {
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+  }
+
+  .partners-row {
+    gap: var(--space-3);
+    justify-content: flex-start;
+  }
+
+  .partners-item {
+    width: 76px;
+  }
+
+  .partners-circle {
+    width: 76px;
+    height: 76px;
+  }
+
+  .partners-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-page {
+    padding: 90px var(--space-2) 60px;
+  }
+
+  .partners-title {
+    font-size: clamp(0.9rem, 4.5vw, 1.2rem);
+  }
+
+  .partners-hero-badge {
+    font-size: 0.4rem;
+  }
+
+  .partners-item {
+    width: 64px;
+  }
+
+  .partners-circle {
+    width: 64px;
+    height: 64px;
+  }
+}

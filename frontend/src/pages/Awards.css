@@ -1,0 +1,440 @@
+/* Awards.css - Complete awards page styling */
+
+/* ============================================================
+   AWARDS PAGE - Matches About page styling
+   ============================================================ */
+
+.awards-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px var(--space-3) calc(var(--space-4) + 80px);
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.awards-container {
+  width: 100%;
+}
+
+/* ============================================================
+   HERO SECTION - Matches About hero
+   ============================================================ */
+
+.awards-hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.awards-hero-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.awards-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: var(--space-3);
+}
+
+.awards-hero-badge {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-cardboard-mid);
+  margin-bottom: var(--space-1);
+  opacity: 0.7;
+}
+
+.awards-title {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-cardboard-deep);
+  margin-bottom: var(--space-1);
+  line-height: 1.1;
+  opacity: 0.85;
+}
+
+.awards-hero-line {
+  width: 25px;
+  height: 1px;
+  background: var(--color-cardboard-deep);
+  opacity: 0.15;
+  margin: var(--space-1) 0;
+}
+
+.awards-hero-text {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: clamp(0.65rem, 0.7vw, 0.75rem);
+  line-height: 1.5;
+  color: var(--color-cardboard-deep);
+  opacity: 0.75;
+  max-width: 90%;
+}
+
+/* ============================================================
+   AWARDS GRID - Premium card layout
+   ============================================================ */
+
+.awards-grid-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.awards-grid-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 200ms;
+}
+
+.awards-grid-header {
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+
+.awards-grid-title {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--color-cardboard-deep);
+  margin-bottom: var(--space-1);
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.awards-grid-line {
+  width: 30px;
+  height: 1px;
+  background: var(--color-cardboard-deep);
+  opacity: 0.15;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   AWARDS GRID
+   ============================================================ */
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ============================================================
+   AWARD CARD - Premium design
+   ============================================================ */
+
+.award-card {
+  position: relative;
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: awardFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: calc(var(--card-delay, 0) * 100ms);
+}
+
+@keyframes awardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.award-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Award Year - Large, subtle number */
+.award-year {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: 2.5rem;
+  color: var(--color-cardboard-deep);
+  opacity: 0.08;
+  line-height: 1;
+  margin-bottom: calc(var(--space-0) * -1);
+  letter-spacing: 0.05em;
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-3);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Award Icon/Emoji */
+.award-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-1);
+  opacity: 0.7;
+  display: block;
+}
+
+/* Award Title */
+.award-title {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: 1.1rem;
+  color: var(--color-cardboard-deep);
+  margin: 0;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+/* Award Organization */
+.award-organization {
+  font-family: var(--font-body);
+  font-weight: 100 !important;
+  font-size: 0.7rem;
+  color: var(--color-cardboard-mid);
+  letter-spacing: 0.05em;
+  margin: 0;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.award-organization::before {
+  content: '—';
+  opacity: 0.3;
+}
+
+/* Award Description */
+.award-description {
+  font-family: var(--font-body);
+  font-weight: 100 !important;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--color-cardboard-deep);
+  margin: var(--space-1) 0 0 0;
+  opacity: 0.7;
+}
+
+/* Award Year Badge (alternative style) */
+.award-year-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 100 !important;
+  font-size: 0.55rem;
+  color: var(--color-cardboard-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  align-self: flex-start;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   AWARD CARD VARIANTS
+   ============================================================ */
+
+/* Featured Award - Larger card */
+.award-card--featured {
+  grid-column: span 2;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.award-card--featured .award-year {
+  font-size: 3.5rem;
+  opacity: 0.06;
+}
+
+.award-card--featured .award-title {
+  font-size: 1.3rem;
+}
+
+/* Gold Award */
+.award-card--gold {
+  border-left: 3px solid #d4a843;
+}
+
+.award-card--gold .award-icon {
+  color: #d4a843;
+}
+
+/* Silver Award */
+.award-card--silver {
+  border-left: 3px solid #c0c0c0;
+}
+
+.award-card--silver .award-icon {
+  color: #c0c0c0;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.awards-empty {
+  text-align: center;
+  padding: var(--space-4) 0;
+  color: var(--color-cardboard-mid);
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 968px) {
+  .awards-hero-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .awards-hero-content {
+    padding-right: 0;
+  }
+  
+  .awards-hero-text {
+    max-width: 100%;
+  }
+  
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .award-card--featured {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .awards-page {
+    padding: 100px var(--space-2) calc(var(--space-3) + 80px);
+  }
+  
+  .awards-title {
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+  }
+  
+  .awards-hero-text {
+    font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+  }
+  
+  .awards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+  
+  .award-card {
+    padding: var(--space-3);
+  }
+  
+  .award-year {
+    font-size: 2rem;
+  }
+  
+  .award-title {
+    font-size: 1rem;
+  }
+  
+  .award-card--featured {
+    grid-column: span 1;
+  }
+  
+  .award-card--featured .award-year {
+    font-size: 2.5rem;
+  }
+  
+  .award-card--featured .award-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .awards-page {
+    min-height: 100vh;
+    padding: 90px var(--space-2) 60px;
+  }
+  
+  .awards-title {
+    font-size: clamp(0.9rem, 4.5vw, 1.2rem);
+  }
+  
+  .awards-hero-badge {
+    font-size: 0.4rem;
+  }
+  
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  
+  .award-card {
+    padding: var(--space-3);
+  }
+  
+  .award-year {
+    font-size: 1.8rem;
+    top: var(--space-1);
+    right: var(--space-2);
+  }
+  
+  .award-title {
+    font-size: 0.95rem;
+  }
+  
+  .award-organization {
+    font-size: 0.65rem;
+  }
+  
+  .award-description {
+    font-size: 0.65rem;
+  }
+  
+  .award-icon {
+    font-size: 1.5rem;
+  }
+  
+  .award-card--featured {
+    grid-column: span 1;
+  }
+  
+  .award-card--featured .award-title {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,29 @@
+/* components/CartButton.css */
+.cart-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-cardboard-panel);
+  text-decoration: none;
+}
+
+.cart-button__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: var(--color-cardboard-panel);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+}

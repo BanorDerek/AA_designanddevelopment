@@ -1,0 +1,194 @@
+/* components/BottomBar.css */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  padding-left: max(4px, env(safe-area-inset-left));
+  padding-right: max(4px, env(safe-area-inset-right));
+  background: #B2A881;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  
+  /* Auto-hide behavior */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              visibility 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bottom-bar--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Subtle glow indicator at the bottom */
+.bottom-bar-indicator {
+  position: fixed;
+  bottom: 20px; /* Moved up slightly so it's visible */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.bottom-bar-indicator--visible {
+  opacity: 1;
+}
+
+/* Glow line */
+.bottom-bar-indicator::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1.5);
+  }
+}
+
+/* Subtle text hint */
+.bottom-bar-hint-text {
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  user-select: none;
+  margin-top: 2px;
+}
+
+.bottom-bar-indicator--visible .bottom-bar-hint-text {
+  opacity: 1;
+}
+
+/* Hover trigger zone at bottom of page */
+.bottom-bar-trigger {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 9998;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Pin the first and last children */
+.bottom-bar > *:first-child {
+  position: absolute;
+  left: max(4px, env(safe-area-inset-left));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bottom-bar > *:last-child {
+  position: absolute;
+  right: max(4px, env(safe-area-inset-right));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Logo styles */
+.bottom-bar__logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-bar__logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.bottom-bar__brand-name {
+  font-family: 'Albertus Nova', serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--color-cardboard-deep, #3a3226);
+  letter-spacing: 0.04em;
+}
+
+/* Hide indicator when bar is visible */
+.bottom-bar--visible ~ .bottom-bar-indicator {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .bottom-bar {
+    padding: 0 2px;
+    padding-left: max(2px, env(safe-area-inset-left));
+    padding-right: max(2px, env(safe-area-inset-right));
+    height: 70px;
+  }
+
+  .bottom-bar > *:first-child {
+    left: max(2px, env(safe-area-inset-left));
+  }
+
+  .bottom-bar > *:last-child {
+    right: max(2px, env(safe-area-inset-right));
+  }
+
+  .bottom-bar__logo {
+    height: 32px;
+  }
+
+  .bottom-bar__brand-name {
+    font-size: 0.85rem;
+  }
+
+  .bottom-bar-indicator::before {
+    width: 40px;
+    height: 2px;
+  }
+
+  .bottom-bar-hint-text {
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bottom-bar-hint-text {
+    display: none;
+  }
+}

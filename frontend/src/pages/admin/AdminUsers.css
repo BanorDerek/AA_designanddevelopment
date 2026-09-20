@@ -1,0 +1,54 @@
+.admin-users__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+}
+
+.admin-users__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.admin-users__row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-users__name {
+  font-family: var(--font-display);
+  color: var(--color-cardboard-deep);
+}
+
+.admin-users__email {
+  font-size: 0.75rem;
+  color: var(--color-cardboard);
+}
+
+.admin-users__you {
+  font-size: 0.75rem;
+  background: var(--color-cream-dim);
+  color: var(--color-cardboard-deep);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.admin-users__badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.65rem;
+  background: var(--color-cardboard);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.admin-users__actions {
+  display: flex;
+  gap: 6px;
+}

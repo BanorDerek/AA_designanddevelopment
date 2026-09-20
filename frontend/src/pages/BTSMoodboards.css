@@ -1,0 +1,424 @@
+/* BTSMoodboards.css - Same as Work page, NO border-radius, NO spaces on mobile */
+
+/* =========================================
+   BTS PAGE - Same as Work page
+========================================= */
+
+.bts-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #403a35;
+  padding: 100px 40px 60px;
+  box-sizing: border-box;
+}
+
+.bts-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bts-loading {
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--color-cardboard-mid);
+  font-family: var(--font-body);
+  font-weight: 100;
+}
+
+/* =========================================
+   TOP BAR - Same as Work page
+========================================= */
+
+.bts-topbar {
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  margin-top: 10px;
+}
+
+.bts-topbar--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Brand */
+.bts-brand {
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--color-cardboard-deep);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+/* =========================================
+   CATEGORY NAVIGATION - Same as Work sections
+========================================= */
+
+.bts-category-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 34px;
+}
+
+.bts-category-nav__item {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 4px 0;
+  margin: 0;
+  font-family: 'Chivo', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  color: #403a35;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bts-category-nav__item:hover {
+  opacity: 0.55;
+  transform: translateY(-1px);
+}
+
+.bts-category-nav__item:focus-visible {
+  outline: 1px solid #403a35;
+  outline-offset: 5px;
+}
+
+.bts-category-nav__item--active {
+  opacity: 1 !important;
+  font-weight: 500 !important;
+  transform: none !important;
+  border-bottom: 2px solid #403a35;
+}
+
+/* =========================================
+   GRID SECTION
+========================================= */
+
+.bts-grid-section {
+  width: 100%;
+  margin: 0;
+  padding: 30px 0 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.bts-grid-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   IMAGE GRID - Same as Work grid
+========================================= */
+
+.bts-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 60px;
+  row-gap: 30px;
+}
+
+/* =========================================
+   IMAGE CARD - Same as Work card - NO CURVE
+========================================= */
+
+.bts-card {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease var(--card-delay),
+              transform 0.7s ease var(--card-delay);
+}
+
+.bts-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bts-card__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.45 / 1;
+  overflow: hidden;
+  background: #181818;
+  border-radius: 0; /* NO CURVE - flat like Work page */
+}
+
+.bts-card__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1),
+              filter 0.5s ease;
+}
+
+.bts-card__frame:hover img {
+  transform: scale(1.025);
+}
+
+/* =========================================
+   NUMBER BADGE
+========================================= */
+
+.bts-card__number-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bts-card__number {
+  font-family: 'Chivo', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================
+   OVERLAY - Title & Caption
+========================================= */
+
+.bts-card__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 35px 12px 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.48),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bts-card__title {
+  display: block;
+  font-family: 'Albertus Nova Regular', serif !important;
+  font-weight: 100 !important;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bts-card__caption {
+  display: block;
+  font-family: 'Chivo', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.bts-empty-state {
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--color-cardboard-mid);
+  font-family: var(--font-body);
+  font-weight: 100;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  grid-column: 1 / -1;
+}
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .bts-page {
+    padding: 100px 24px 60px;
+  }
+
+  .bts-topbar {
+    height: 75px;
+  }
+
+  .bts-brand {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  .bts-category-nav {
+    gap: 22px;
+  }
+
+  .bts-category-nav__item {
+    font-size: 0.75rem;
+  }
+
+  .bts-grid {
+    column-gap: 30px;
+    row-gap: 24px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE - MOBILE (NO SPACES)
+========================================= */
+
+@media (max-width: 700px) {
+  .bts-page {
+    padding: 110px 0 40px; /* REMOVED side padding */
+  }
+
+  .bts-topbar {
+    height: auto;
+    min-height: 70px;
+    padding: 12px 16px; /* ADDED padding to topbar only */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .bts-brand {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .bts-category-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 16px; /* ADDED padding to nav only */
+    box-sizing: border-box;
+  }
+
+  .bts-category-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bts-category-nav__item {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .bts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0; /* REMOVED gap between columns */
+    row-gap: 0; /* REMOVED gap between rows */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .bts-card {
+    width: 100%;
+    display: block;
+  }
+
+  .bts-card__frame {
+    aspect-ratio: 1 / 1.05;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .bts-card__overlay {
+    padding: 28px 8px 7px;
+  }
+
+  .bts-card__title {
+    font-size: 0.7rem;
+  }
+
+  .bts-card__caption {
+    font-size: 0.5rem;
+  }
+
+  .bts-card__number-badge {
+    top: 8px;
+    left: 8px;
+  }
+
+  .bts-card__number {
+    font-size: 8px;
+  }
+
+  .bts-grid-section {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+  .bts-page {
+    padding: 90px 0 40px; /* REMOVED side padding */
+  }
+
+  .bts-topbar {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+
+  .bts-brand {
+    font-size: 0.75rem;
+  }
+
+  .bts-category-nav {
+    gap: 14px;
+    padding: 0 12px;
+  }
+
+  .bts-category-nav__item {
+    font-size: 0.65rem;
+  }
+
+  .bts-grid {
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .bts-card__title {
+    font-size: 0.65rem;
+  }
+
+  .bts-card__caption {
+    font-size: 0.45rem;
+  }
+}

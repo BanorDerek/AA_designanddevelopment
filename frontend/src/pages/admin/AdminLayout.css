@@ -1,0 +1,85 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-cream-dim);
+}
+
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--color-cardboard-deep);
+  color: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-2);
+}
+
+.admin-sidebar__brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: var(--space-4);
+  padding: 0 var(--space-1);
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.admin-sidebar__link {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--color-cream);
+  opacity: 0.75;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s var(--ease-cozy), opacity 0.2s var(--ease-cozy);
+}
+
+.admin-sidebar__link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar__link--active {
+  opacity: 1;
+  background: var(--color-cardboard);
+}
+
+.admin-sidebar__footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.admin-sidebar__user {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  padding: 0 var(--space-1);
+  word-break: break-all;
+}
+
+.admin-sidebar__logout {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-cream);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s var(--ease-cozy);
+}
+
+.admin-sidebar__logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-content {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  max-width: 1000px;
+}

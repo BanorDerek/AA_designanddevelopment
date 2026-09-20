@@ -1,0 +1,116 @@
+/* components/LoadingScreen.css */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-cozy);
+}
+
+.loader__mask-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* No longer opacity:0 — the SVG itself now renders the visible
+     masked rect natively (previously this SVG only held a <mask>
+     definition consumed by a separate HTML div via CSS mask-image,
+     which is what didn't work reliably on real mobile browsers). */
+}
+
+/* The visible peephole shape — an SVG <rect> masked natively via the
+   SVG "mask" attribute (set in the JSX), not CSS mask-image. Native
+   SVG masking has solid, consistent support on real mobile devices. */
+.loader__scrim-rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: scale(1.04);
+  animation: scrimIn 1s var(--ease-cozy) forwards;
+}
+
+@keyframes scrimIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loader--exit {
+  opacity: 0;
+}
+
+/* Progress indicator - sits on top of the scrim */
+.loader__progress {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display, sans-serif);
+  color: white;
+  opacity: 0;
+  animation: fadeInProgress 1s ease forwards;
+  animation-delay: 1s;
+  mix-blend-mode: difference; /* Makes it visible on both light and dark backgrounds */
+}
+
+.loader__progress-text {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  min-width: 40px;
+  text-align: right;
+}
+
+.loader__progress-bar {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader__progress-fill {
+  height: 100%;
+  background: white;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+@keyframes fadeInProgress {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .loader__progress {
+    bottom: 40px;
+  }
+
+  .loader__progress-bar {
+    width: 80px;
+  }
+}
