@@ -104,6 +104,7 @@
   top: var(--space-4);
   left: var(--space-4);
   color: #ffffff;
+   z-index: 10; 
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 100 !important;

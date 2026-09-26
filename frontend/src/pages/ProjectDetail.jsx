@@ -1,236 +1,190 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
-import { formatMoney } from '../utils/formatMoney';
-import './ProductDetail.css';
+import { useParams, Link } from 'react-router-dom';
+import './ProjectDetail.css';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
-export default function ProductDetail() {
+export default function ProjectDetail() {
   const { slug } = useParams();
-  const navigate = useNavigate();
-  const { addToCart } = useCart();
-  const [product, setProduct] = useState(null);
+  const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
-  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [detailsVisible, setDetailsVisible] = useState(false);
+  const [galleryVisible, setGalleryVisible] = useState(false);
+  const [videosVisible, setVideosVisible] = useState(false);
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${API_BASE}/products/${slug}`);
-        if (!res.ok) throw new Error('Product not found');
-        const data = await res.json();
-        setProduct(data);
-        setSelectedImage(data.coverImageUrl);
-        
-        // Fetch related products
-        if (data.categoryId) {
-          const relatedRes = await fetch(`${API_BASE}/products?category=${data.category?.slug}&limit=4`);
-          const relatedData = await relatedRes.json();
-          setRelatedProducts(relatedData.filter(p => p.id !== data.id));
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!slug) return;
 
-    if (slug) fetchProduct();
+    setLoading(true);
+    setError('');
+
+    fetch(`${API_BASE}/projects/${slug}`)
+      .then((r) => {
+        if (!r.ok) throw new Error('Project not found');
+        return r.json();
+      })
+      .then((data) => {
+        setProject(data);
+        // Staggered reveal to match the CSS transition delays
+        setTimeout(() => setHeroVisible(true), 100);
+        setTimeout(() => setDetailsVisible(true), 300);
+        setTimeout(() => setGalleryVisible(true), 500);
+        setTimeout(() => setVideosVisible(true), 700);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, [slug]);
-
-  const handleAddToCart = () => {
-    addToCart(product, quantity);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
-
-  const handleThumbnailClick = (imageUrl) => {
-    setSelectedImage(imageUrl);
-  };
 
   if (loading) {
     return (
-      <div className="product-detail-loading">
-        <div className="product-detail-loading__spinner"></div>
-        <p>Loading product...</p>
-      </div>
+      <main className="project-detail">
+        <div style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+          <p>Loading project…</p>
+        </div>
+      </main>
     );
   }
 
-  if (error || !product) {
+  if (error || !project) {
     return (
-      <div className="product-detail-error">
-        <p>{error || 'Product not found'}</p>
-        <button onClick={() => navigate('/products')} className="product-detail-error__btn">
-          Back to Products
-        </button>
-      </div>
+      <main className="project-detail">
+        <div style={{ padding: '6rem 2rem', textAlign: 'center' }}>
+          <p>{error || 'Project not found'}</p>
+          <Link to="/work" className="project-detail__back" style={{ position: 'static', color: '#000', display: 'inline-block', marginTop: '1rem' }}>
+            ← Back to Work
+          </Link>
+        </div>
+      </main>
     );
   }
 
-  // Parse product details from metadata or use defaults
-  const productDetails = product.metadata || {
-    manufacturer: 'AA Design & Development',
-    styleName: 'Modern',
-    manufacturerPartNumber: 'N/A',
-    asin: 'N/A'
-  };
+  // Split gallery images into rows of 1 or 2 based on the CSS grid classes
+  // The original likely paired images. Here's a sensible default:
+  // - First image: full width
+  // - Then alternate single/double
+  const images = project.images || [];
+const galleryRows = [];
+let i = 0;
+while (i < images.length) {
+  // Take two images for a "double" row
+  const pair = images.slice(i, i + 2);
+  if (pair.length > 0) {
+    galleryRows.push({
+      type: pair.length === 2 ? 'double' : 'single',
+      images: pair,
+    });
+  }
+  i += 2;
 
+  // Take one image for a "full" row
+  if (i < images.length) {
+    galleryRows.push({
+      type: 'full',
+      images: [images[i]],
+    });
+    i += 1;
+  }
+}
   return (
-    <main className="product-detail">
-      <div className="product-detail__wrapper">
-        {/* Back button */}
-        <button onClick={() => navigate('/products')} className="product-detail__back">
-          ← Back to Products
-        </button>
+    <main className="project-detail">
+      {/* ================= HERO ================= */}
+      <div className={`project-detail__hero ${heroVisible ? 'project-detail__hero--visible' : ''}`}>
+        <Link to="/work" className="project-detail__back">
+          ← Back to Work
+        </Link>
 
-        {/* Main product section */}
-        <div className="product-detail__main">
-          {/* Left: Images */}
-          <div className="product-detail__images">
-            <div className="product-detail__main-image">
-              {selectedImage ? (
-                <img src={selectedImage} alt={product.name} />
-              ) : (
-                <div className="product-detail__placeholder">No image</div>
-              )}
-            </div>
-            
-            {/* Thumbnails */}
-            {product.images && product.images.length > 0 && (
-              <div className="product-detail__thumbnails">
-                {[product.coverImageUrl, ...product.images].map((img, index) => (
-                  <button
-                    key={index}
-                    className={`product-detail__thumbnail ${selectedImage === img ? 'product-detail__thumbnail--active' : ''}`}
-                    onClick={() => handleThumbnailClick(img)}
-                  >
-                    <img src={img} alt={`${product.name} view ${index + 1}`} />
-                  </button>
+        {project.section && (
+          <span className="project-detail__hero-section">
+            {project.section.name}
+          </span>
+        )}
+
+        {project.coverImageUrl && (
+          <img src={project.coverImageUrl} alt={project.title} />
+        )}
+
+        <div className="project-detail__hero-overlay">
+          <h1 className="project-detail__hero-title">{project.title}</h1>
+        </div>
+      </div>
+
+      {/* ================= CONTENT ================= */}
+      <div className="project-detail__content">
+        <div className={`project-detail__details ${detailsVisible ? 'project-detail__details--visible' : ''}`}>
+          {/* Left: Meta */}
+          <div className="project-detail__meta">
+            <h3 className="project-detail__meta-heading">Project Details</h3>
+
+            {Array.isArray(project.details) && project.details.length > 0 && (
+              <div className="project-detail__meta-rows">
+                {project.details.map((row, i) => (
+                  <div className="project-detail__meta-row" key={i}>
+                    <span className="project-detail__meta-label">{row.label}</span>
+                    <span className="project-detail__meta-value">{row.value}</span>
+                  </div>
                 ))}
               </div>
             )}
+
+            {project.description && (
+              <p className="project-detail__lead">{project.description}</p>
+            )}
           </div>
 
-          {/* Right: Product info */}
-          <div className="product-detail__info">
-            <h1 className="product-detail__name">{product.name}</h1>
-            
-            {product.category && (
-              <span className="product-detail__category">{product.category.name}</span>
+          {/* Right: Description */}
+          <div className="project-detail__description-wrapper">
+            {project.description && (
+              <p className="project-detail__description">{project.description}</p>
             )}
-            
-            <div className="product-detail__brand">
-              {productDetails.manufacturer || 'AA Design & Development'}
-            </div>
-            
-            <div className="product-detail__price">
-              {formatMoney(product.price, product.currency)}
-            </div>
-
-            {product.description && (
-              <p className="product-detail__description">{product.description}</p>
-            )}
-
-            {/* Quantity selector */}
-            <div className="product-detail__quantity">
-              <label>Quantity</label>
-              <div className="product-detail__quantity-controls">
-                <button 
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  disabled={quantity <= 1}
-                >
-                  −
-                </button>
-                <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
-              </div>
-            </div>
-
-            {/* Add to cart */}
-            <button 
-              className={`product-detail__add-btn ${added ? 'product-detail__add-btn--added' : ''}`}
-              onClick={handleAddToCart}
-            >
-              {added ? '✓ Added to Cart' : 'Add to Cart'}
-            </button>
-
-            {/* Availability */}
-            <div className="product-detail__availability">
-              <span className="product-detail__availability-dot"></span>
-              In Stock
-            </div>
           </div>
         </div>
 
-        {/* Product information section */}
-        <div className="product-detail__sections">
-          <h2 className="product-detail__section-title">Product information</h2>
-          
-          {/* Item details in table */}
-          <div className="product-detail__details-table">
-            <h3 className="product-detail__subsection-title">Item details</h3>
-            <table>
-              <tbody>
-                <tr>
-                  <td className="product-detail__detail-label">Manufacturer</td>
-                  <td className="product-detail__detail-value">{productDetails.manufacturer || 'N/A'}</td>
-                </tr>
-                <tr>
-                  <td className="product-detail__detail-label">Style Name</td>
-                  <td className="product-detail__detail-value">{productDetails.styleName || 'N/A'}</td>
-                </tr>
-                <tr>
-                  <td className="product-detail__detail-label">Manufacturer Part Number</td>
-                  <td className="product-detail__detail-value">{productDetails.manufacturerPartNumber || 'N/A'}</td>
-                </tr>
-                <tr>
-                  <td className="product-detail__detail-label">ASIN</td>
-                  <td className="product-detail__detail-value">{productDetails.asin || 'N/A'}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Warranty & Support */}
-          <div className="product-detail__warranty">
-            <h3 className="product-detail__subsection-title">Warranty & Support</h3>
-            <p>{productDetails.warranty || 'Standard manufacturer warranty applies.'}</p>
-          </div>
-        </div>
-
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="product-detail__related">
-            <h2 className="product-detail__section-title">Related Products</h2>
-            <div className="product-detail__related-grid">
-              {relatedProducts.map((related) => (
-                <div 
-                  key={related.id} 
-                  className="product-detail__related-card"
-                  onClick={() => navigate(`/products/${related.slug}`)}
-                >
-                  <div className="product-detail__related-image">
-                    {related.coverImageUrl ? (
-                      <img src={related.coverImageUrl} alt={related.name} />
-                    ) : (
-                      <div className="product-detail__placeholder">No image</div>
+        {/* Gallery */}
+        {galleryRows.length > 0 && (
+          <div className={`project-detail__gallery ${galleryVisible ? 'project-detail__gallery--visible' : ''}`}>
+            {galleryRows.map((row, i) => (
+              <div
+                key={i}
+                className={`project-gallery__row project-gallery__row--${row.type}`}
+              >
+                {row.images.map((img) => (
+                  <figure key={img.id} className="project-gallery__item">
+                    <img src={img.imageUrl} alt={img.caption || ''} loading="lazy" />
+                    {img.caption && (
+                      <figcaption className="project-gallery__caption">
+                        {img.caption}
+                      </figcaption>
                     )}
-                  </div>
-                  <h4>{related.name}</h4>
-                  <span>{formatMoney(related.price, related.currency)}</span>
-                </div>
-              ))}
-            </div>
+                  </figure>
+                ))}
+              </div>
+            ))}
           </div>
         )}
       </div>
+
+      {/* ================= VIDEOS ================= */}
+      {project.videos && project.videos.length > 0 && (
+        <div className={`project-detail__videos ${videosVisible ? 'project-detail__videos--visible' : ''}`}>
+          {project.videos.map((video) => (
+            <div key={video.id} style={{ width: '100%' }}>
+              <video
+                src={video.videoUrl}
+                controls
+                playsInline
+                style={{ width: '100%', display: 'block' }}
+              />
+              {video.caption && (
+                <p className="project-gallery__caption" style={{ textAlign: 'center' }}>
+                  {video.caption}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </main>
   );
 }
